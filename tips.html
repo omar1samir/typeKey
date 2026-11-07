@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>typeKey - Typing Tips & Health</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .font-arabic {
+            font-family: 'Cairo', Arial, sans-serif;
+        }
+
+        .light-mode {
+            background-color: #f4f4f5;
+            color: #18181b;
+            transition: background-color 300ms ease, color 300ms ease;
+        }
+
+        .light-mode .tips-card {
+            border-color: #d4d4d8;
+            background-color: #fff;
+        }
+
+        .light-mode .tips-heading {
+            color: #27272a;
+        }
+
+        .light-mode .tips-copy {
+            color: #52525b;
+        }
+
+        body {
+            transition: background-color 300ms ease, color 300ms ease;
+        }
+
+        .tips-card,
+        .tips-heading,
+        .tips-copy,
+        .tips-control,
+        .tips-image {
+            transition: opacity 250ms ease, transform 250ms ease, color 300ms ease,
+                background-color 300ms ease, border-color 300ms ease;
+        }
+
+        .tips-language-changing .tips-card {
+            opacity: 0;
+            transform: translateY(0.5rem);
+        }
+
+        .tips-theme-changing .tips-image {
+            opacity: 0.35;
+        }
+
+        .finger-placement-image {
+            aspect-ratio: 1967 / 799;
+        }
+    </style>
+    <script src="js/tips.js" defer></script>
+</head>
+<body class="min-h-screen bg-zinc-900 font-mono text-white transition-colors">
+    <main class="mx-auto max-w-5xl px-6 py-8">
+        <header dir="ltr" class="mb-12 flex items-center justify-between border-b border-zinc-800 pb-5">
+            <h1 class="text-xl font-semibold text-zinc-100" data-i18n="title">Typing Tips &amp; Health</h1>
+            <div class="flex items-center gap-2">
+                <button
+                    id="theme-toggle"
+                    class="tips-control rounded-md border border-zinc-700 px-3 py-1.5 text-xs text-zinc-300 transition-colors hover:border-zinc-500 hover:text-white"
+                    type="button"
+                    data-i18n="theme_toggle"
+                >Theme Toggle</button>
+                <button
+                    id="language-toggle"
+                    class="tips-control rounded-md border border-zinc-700 px-3 py-1.5 text-xs text-zinc-300 transition-colors hover:border-zinc-500 hover:text-white"
+                    type="button"
+                    data-i18n="language_toggle"
+                >العربية</button>
+            </div>
+        </header>
+
+        <div id="tips-content" class="space-y-8" dir="ltr">
+            <section class="tips-card rounded-xl border border-zinc-800 bg-zinc-800/40 p-6 sm:p-8">
+                <h2 class="tips-heading mb-6 text-2xl font-semibold text-zinc-100" data-i18n="sec1_title">1. How to Type Faster</h2>
+                <div class="grid gap-6 sm:grid-cols-2">
+                    <div class="space-y-4">
+                        <p class="tips-copy text-zinc-400" data-i18n="sec1_1"><strong class="text-green-400">Master the Home Row:</strong> Rest your fingers on A S D F and J K L ;. Always return to this position.</p>
+                        <p class="tips-copy text-zinc-400" data-i18n="sec1_2"><strong class="text-green-400">Don't Look at Your Hands:</strong> Looking at the keyboard breaks your muscle memory. Trust your fingers and look only at the screen.</p>
+                    </div>
+                    <img
+                        class="tips-image finger-placement-image h-full min-h-48 w-full rounded-lg object-cover"
+                        src="images/finger-placement-light.png"
+                        data-light="images/finger-placement-light.png"
+                        data-dark="images/finger-placment-dark.png"
+                        alt="Home row finger placement"
+                    >
+                    <div class="space-y-4 sm:col-span-2">
+                        <p class="tips-copy text-zinc-400" data-i18n="sec1_3"><strong class="text-green-400">Focus on Accuracy:</strong> Speed means nothing if you have to backspace every other word. Slow down and aim for 100% accuracy first.</p>
+                        <p class="tips-copy text-zinc-400" data-i18n="sec1_4"><strong class="text-green-400">Use Rhythm, Not Bursts:</strong> Try to type at a steady, even pace. Smooth typing is faster than typing in jerky, unpredictable bursts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tips-card rounded-xl border border-zinc-800 bg-zinc-800/40 p-6 sm:p-8">
+                <h2 class="tips-heading mb-6 text-2xl font-semibold text-zinc-100" data-i18n="sec2_title">2. How to Type Healthier (Ergonomics)</h2>
+                <div class="grid gap-6 sm:grid-cols-2">
+                    <div class="space-y-4">
+                        <p class="tips-copy text-zinc-400" data-i18n="sec2_1"><strong class="text-blue-400">Straight Wrists:</strong> Keep your wrists flat and floating, not resting on the desk or bending up/down.</p>
+                        <p class="tips-copy text-zinc-400" data-i18n="sec2_2"><strong class="text-blue-400">Posture:</strong> Sit up straight with your back against the chair. Adjust your screen so it is at eye level.</p>
+                    </div>
+                    <img
+                        class="tips-image h-full min-h-48 w-full rounded-lg object-cover"
+                        src="images/posture-light.jpeg"
+                        data-light="images/posture-light.jpeg"
+                        data-dark="images/posture-dark.png"
+                        alt="Healthy typing posture"
+                    >
+                    <div class="space-y-4 sm:col-span-2">
+                        <p class="tips-copy text-zinc-400" data-i18n="sec2_3"><strong class="text-blue-400">Relax Your Shoulders:</strong> Tension in your shoulders travels down to your fingers. Take a deep breath and drop your shoulders.</p>
+                        <p class="tips-copy text-zinc-400" data-i18n="sec2_4"><strong class="text-blue-400">Light Touch:</strong> You don't need to smash the keys. Use a light, gentle touch for speed and finger health.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tips-card rounded-xl border border-zinc-800 bg-zinc-800/40 p-6 sm:p-8">
+                <h2 class="tips-heading mb-6 text-2xl font-semibold text-zinc-100" data-i18n="sec3_title">3. The 20-20-20 Rule</h2>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <p class="tips-copy text-zinc-400" data-i18n="sec3_1"><strong class="text-yellow-400">Rest Your Eyes:</strong> Every 20 minutes, look at something 20 feet away for 20 seconds.</p>
+                    <p class="tips-copy text-zinc-400" data-i18n="sec3_2"><strong class="text-yellow-400">Stretch:</strong> Periodically stretch your fingers, hands, and forearms to prevent carpal tunnel syndrome.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

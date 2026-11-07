@@ -1,1 +1,189 @@
 @import "tailwindcss";
+
+@layer components {
+    .char {
+        @apply inline-block rounded-md px-1 py-0.5 font-mono transition duration-100;
+    }
+
+    .cursor {
+        @apply animate-pulse;
+        box-shadow: inset 2px 0 0 theme(--color-sky-400);
+    }
+
+    .mode-button.active,
+    .time-button.active {
+        background-color: #3f3f46;
+        border-color: #71717a;
+        color: #fff;
+    }
+}
+
+@layer utilities {
+    .rounded-xl {
+        border-radius: 0.75rem;
+    }
+
+    .bg-zinc-800\/40 {
+        background-color: rgb(39 39 42 / 0.4);
+    }
+
+    .space-y-8 > :not(:last-child) {
+        margin-block-start: 0;
+        margin-block-end: 2rem;
+    }
+
+    .space-y-4 > :not(:last-child) {
+        margin-block-start: 0;
+        margin-block-end: 1rem;
+    }
+
+    .h-full {
+        height: 100%;
+    }
+
+    .min-h-48 {
+        min-height: 12rem;
+    }
+
+    .object-cover {
+        object-fit: cover;
+    }
+
+    .mb-12 {
+        margin-bottom: 3rem;
+    }
+
+    .gap-2 {
+        gap: 0.5rem;
+    }
+
+    .gap-3 {
+        gap: 0.75rem;
+    }
+
+    .mb-8 {
+        margin-bottom: 2rem;
+    }
+
+    .text-2xl {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .text-7xl {
+        font-size: 4.5rem;
+        line-height: 1;
+    }
+
+    .leading-none {
+        line-height: 1;
+    }
+
+    .w-fit {
+        width: fit-content;
+    }
+
+    .py-1 {
+        padding-block: 0.25rem;
+    }
+
+    .text-green-500 {
+        color: #22c55e;
+    }
+
+    .text-red-500 {
+        color: #ef4444;
+    }
+
+    .text-yellow-500 {
+        color: #eab308;
+    }
+
+    .space-y-6 > :not(:last-child) {
+        margin-block-start: 0;
+        margin-block-end: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+        .sm\:p-8 {
+            padding: 2rem;
+        }
+
+        .sm\:flex-row {
+            flex-direction: row;
+        }
+
+        .sm\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .sm\:col-span-2 {
+            grid-column: span 2 / span 2;
+        }
+
+        .sm\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .sm\:col-span-2 {
+            grid-column: span 2 / span 2;
+        }
+
+        .sm\:items-end {
+            align-items: flex-end;
+        }
+
+        .sm\:gap-32 {
+            gap: 8rem;
+        }
+    }
+}
+
+.light-mode {
+    background-color: #f4f4f5;
+    color: #18181b;
+}
+
+.light-mode .border-zinc-800 {
+    border-color: #d4d4d8;
+}
+
+.light-mode .text-zinc-100,
+.light-mode .text-zinc-200 {
+    color: #27272a;
+}
+
+.light-mode .text-zinc-300 {
+    color: #52525b;
+}
+
+.light-mode .text-zinc-400 {
+    color: #71717a;
+}
+
+.light-mode .text-zinc-500 {
+    color: #71717a;
+}
+
+.light-mode .text-display {
+    color: #71717a;
+}
+
+.light-mode .theme-toggle,
+.light-mode #restart-button {
+    border-color: #a1a1aa;
+    color: #52525b;
+}
+
+.light-mode .theme-toggle:hover,
+.light-mode #restart-button:hover {
+    border-color: #71717a;
+    color: #18181b;
+}
+
+.light-mode .mode-button.active,
+.light-mode .time-button.active {
+    background-color: #e4e4e7;
+    border-color: #a1a1aa;
+    color: #18181b;
+}
