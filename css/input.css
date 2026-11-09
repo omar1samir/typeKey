@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+.typekey-logo-light {
+    display: none;
+}
+
+.light-mode .typekey-logo-dark {
+    display: none;
+}
+
+.light-mode .typekey-logo-light {
+    display: block;
+}
+
 @layer components {
     .char {
         @apply inline-block rounded-md px-1 py-0.5 font-mono transition duration-100;
@@ -141,6 +153,10 @@
 
 .light-mode {
     background-color: #f4f4f5;
+    color: #18181b;
+}
+
+.light-mode .text-white {
     color: #18181b;
 }
 

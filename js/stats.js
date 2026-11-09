@@ -1,5 +1,15 @@
 const themeToggle = document.getElementById('theme-toggle');
 
+function applySavedTheme() {
+    const isLightMode = localStorage.getItem('theme') === 'light';
+    document.body.classList.toggle('light-mode', isLightMode);
+    themeToggle.textContent = isLightMode ? 'Dark mode' : 'Light mode';
+    themeToggle.setAttribute(
+        'aria-label',
+        isLightMode ? 'Switch to dark mode' : 'Switch to light mode'
+    );
+}
+
 function displayResult(id, value) {
     document.getElementById(id).textContent = value;
 }
@@ -26,9 +36,12 @@ if (results) {
 
 themeToggle.addEventListener('click', () => {
     const isLightMode = document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
     themeToggle.textContent = isLightMode ? 'Dark mode' : 'Light mode';
     themeToggle.setAttribute(
         'aria-label',
         isLightMode ? 'Switch to dark mode' : 'Switch to light mode'
     );
 });
+
+applySavedTheme();

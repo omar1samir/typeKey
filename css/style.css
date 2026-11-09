@@ -1,6 +1,19 @@
 /*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
+
+.typekey-logo-light {
+    display: none;
+}
+
+.light-mode .typekey-logo-dark {
+    display: none;
+}
+
+.light-mode .typekey-logo-light {
+    display: block;
+}
+
 @layer theme {
   :root, :host {
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",

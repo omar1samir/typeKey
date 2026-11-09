@@ -3,6 +3,8 @@ const translations = {
         title: 'Typing Tips & Health',
         theme_toggle: 'Theme Toggle',
         language_toggle: 'العربية',
+        back_prompt: 'Ready to go back?',
+        back_link: 'Back to typing',
         sec1_title: '1. How to Type Faster',
         sec1_1: '<strong>Master the Home Row:</strong> Rest your fingers on A S D F and J K L ;. Always return to this position.',
         sec1_2: "<strong>Don't Look at Your Hands:</strong> Looking at the keyboard breaks your muscle memory. Trust your fingers and look only at the screen.",
@@ -21,6 +23,8 @@ const translations = {
         title: 'نصائح الكتابة والصحة',
         theme_toggle: 'تبديل السمة',
         language_toggle: 'English',
+        back_prompt: 'هل أنت مستعد للعودة؟',
+        back_link: 'العودة إلى الكتابة',
         sec1_title: '١. كيف تكتب بشكل أسرع',
         sec1_1: '<strong>إتقان صف الوسط:</strong> ضع أصابعك على مفاتيح الارتكاز (A S D F) و (J K L ;). عُد دائماً إلى هذا الوضع بعد كل ضغطة.',
         sec1_2: '<strong>لا تنظر إلى يديك:</strong> إطالة النظر إلى لوحة المفاتيح تعيق بناء ذاكرتك العضلية. ثق بأصابعك وانظر إلى الشاشة فقط.',
@@ -53,6 +57,11 @@ function setLanguage(lang) {
     });
 }
 
+function applySavedTheme() {
+    const isLightMode = localStorage.getItem('theme') === 'light';
+    document.body.classList.toggle('light-mode', isLightMode);
+}
+
 function updateImageSources() {
     const isLightMode = document.body.classList.contains('light-mode');
 
@@ -62,7 +71,8 @@ function updateImageSources() {
 }
 
 function toggleTheme() {
-    document.body.classList.toggle('light-mode');
+    const isLightMode = document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
     document.body.classList.add('tips-theme-changing');
     updateImageSources();
     window.setTimeout(() => {
@@ -79,5 +89,6 @@ languageToggle.addEventListener('click', () => {
     }, 300);
 });
 
+applySavedTheme();
 setLanguage('en');
 updateImageSources();

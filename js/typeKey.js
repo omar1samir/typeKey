@@ -1,3 +1,4 @@
+// selectors
 const textDisplay = document.getElementById('text-display');
 const typingInput = document.getElementById('typing-input');
 const restartButton = document.getElementById('restart-button');
@@ -8,6 +9,8 @@ const timeOptions = document.getElementById('time-options');
 const timeButtons = document.querySelectorAll('.time-button');
 const timerDisplay = document.getElementById('timer-display');
 
+// storing the text and words in arrays
+// the text array (quotes)
 const TEXT_BANK = [
     'Small steps every day create remarkable results over time.',
     'The best way to learn is to practice with curiosity.',
@@ -26,6 +29,7 @@ const TEXT_BANK = [
     'Strong habits are built by repeating small choices consistently.'
 ];
 
+// the word array 
 const WORD_BANK = [
     'about', 'after', 'again', 'against', 'almost', 'always', 'another', 'around',
     'because', 'before', 'begin', 'being', 'below', 'between', 'both', 'bring',
@@ -53,6 +57,7 @@ const WORD_BANK = [
     'work', 'world', 'would', 'write', 'year', 'young'
 ];
 
+// storing the color classes, 
 const COLOR_CLASSES = [
     'bg-green-500/20',
     'text-green-400',
@@ -62,6 +67,7 @@ const COLOR_CLASSES = [
     'text-red-400'
 ];
 
+// the state tracking variables
 let textToType = '';
 let currentIndex = 0;
 let totalAttempts = 0;
@@ -75,6 +81,18 @@ let correctedIndices = new Set();
 let gameMode = 'quote';
 let timeLimit = 0;
 
+function applySavedTheme() {
+    // take the stored theme from localStorage
+    const isLightMode = localStorage.getItem('theme') === 'light';
+    document.body.classList.toggle('light-mode', isLightMode);
+    themeToggle.textContent = isLightMode ? 'Dark mode' : 'Light mode';
+    themeToggle.setAttribute(
+        'aria-label',
+        isLightMode ? 'Switch to dark mode' : 'Switch to light mode'
+    );
+}
+
+// fisher yates shuffle to make sure it's randomized (better than Math.random)
 function fisherYatesShuffle(items) {
     const shuffledItems = [...items];
 
@@ -89,17 +107,18 @@ function fisherYatesShuffle(items) {
     return shuffledItems;
 }
 
+// choosing a random word from the word & sentence bank
 function chooseSentence() {
     return fisherYatesShuffle(TEXT_BANK)[0];
 }
 
 function chooseWords(count) {
-    return Array.from({ length: count }, () => {
-        const randomIndex = Math.floor(Math.random() * WORD_BANK.length);
-        return WORD_BANK[randomIndex].trim();
-    });
+    return fisherYatesShuffle(WORD_BANK)
+        .slice(0, count)
+        .map((word) => word.trim());
 }
 
+// 
 function createWordMarkup(words, startingIndex, includeLeadingSpace = false) {
     let characterIndex = startingIndex;
     const leadingSpaceMarkup = includeLeadingSpace
@@ -143,6 +162,7 @@ function updateTimerDisplay() {
         : 'Quote';
 }
 
+// for changing the test mode 
 function updateModeControls() {
     const isTimeMode = gameMode === 'time';
     timeOptions.classList.toggle('hidden', !isTimeMode);
@@ -344,6 +364,8 @@ timeButtons.forEach((button) => {
 });
 themeToggle.addEventListener('click', () => {
     const isLightMode = document.body.classList.toggle('light-mode');
+    // store the selected theme in localStorage
+    localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
     themeToggle.textContent = isLightMode ? 'Dark mode' : 'Light mode';
     themeToggle.setAttribute(
         'aria-label',
@@ -353,3 +375,4 @@ themeToggle.addEventListener('click', () => {
 document.addEventListener('click', () => typingInput.focus());
 
 resetGame();
+applySavedTheme();
